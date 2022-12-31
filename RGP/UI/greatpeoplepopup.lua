@@ -1041,10 +1041,14 @@ end -- ViewPlanner
 -- Change the type of great people displayed
 function PlannerSelectionChanged(sClass:string)
 	m_plannerSelection = sClass;
-	Controls.PlannerClassName:SetText( Locale.Lookup(GameInfo.GreatPersonClasses[sClass].Name) );
-	local textureOffsetX:number, textureOffsetY:number, textureSheet:string = IconManager:FindIconAtlas(GameInfo.GreatPersonClasses[sClass].ActionIcon, SIZE_ACTION_ICON);
+    if GameInfo.GreatPersonClasses[sClass] ~= nil then
+        Controls.PlannerClassName:SetText( Locale.Lookup(GameInfo.GreatPersonClasses[sClass].Name) );
+        local textureOffsetX:number, textureOffsetY:number, textureSheet:string = IconManager:FindIconAtlas(GameInfo.GreatPersonClasses[sClass].ActionIcon, SIZE_ACTION_ICON);
+    end
 	if(textureSheet == nil or textureSheet == "") then
-		UI.DataError("Could not find icon in ViewCurrent: icon=\""..actionIcon.."\", iconSize="..tostring(SIZE_ACTION_ICON) );
+        if actionIcon ~= nil then
+            UI.DataError("Could not find icon in ViewCurrent: icon=\""..actionIcon.."\", iconSize="..tostring(SIZE_ACTION_ICON) );
+        end
 	else
 		Controls.PlannerClassIcon:SetTexture(textureOffsetX, textureOffsetY, textureSheet);
 	end

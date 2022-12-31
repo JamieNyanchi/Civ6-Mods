@@ -5277,6 +5277,7 @@ function Initialize()
 	Controls.HideNoImpactMinorsCheckbox:SetSelected( false );
 
 	-- Events
+    local offset = 0;
 	LuaEvents.TopPanel_OpenReportsScreen.Add(  function() Open();  end );
 	LuaEvents.TopPanel_CloseReportsScreen.Add( function() Close(); end );
 	LuaEvents.ReportsList_OpenYields.Add(     function() Open(1); end );
@@ -5284,12 +5285,13 @@ function Initialize()
 	LuaEvents.ReportsList_OpenCityStatus.Add( function() Open(3); end );
 	if GameCapabilities.HasCapability("CAPABILITY_GOSSIP_REPORT") then
 		LuaEvents.ReportsList_OpenGossip.Add( function() Open(4); end );
+        offset = 1;
 	end
-	LuaEvents.ReportsList_OpenDeals.Add(      function() Open(5); end );
-	LuaEvents.ReportsList_OpenUnits.Add(      function() Open(6); end );
-	LuaEvents.ReportsList_OpenPolicies.Add(   function() Open(7); end );
-	LuaEvents.ReportsList_OpenMinors.Add(     function() Open(8); end );
-	if bIsGatheringStorm then LuaEvents.ReportsList_OpenCities2.Add( function() Open(9); end ); end
+	LuaEvents.ReportsList_OpenDeals.Add(      function() Open(4 + offset); end );
+	LuaEvents.ReportsList_OpenUnits.Add(      function() Open(5 + offset); end );
+	LuaEvents.ReportsList_OpenPolicies.Add(   function() Open(6 + offset); end );
+	LuaEvents.ReportsList_OpenMinors.Add(     function() Open(7 + offset); end );
+	if bIsGatheringStorm then LuaEvents.ReportsList_OpenCities2.Add( function() Open(8 + offset); end ); end
 	
 	Events.LocalPlayerTurnEnd.Add( OnLocalPlayerTurnEnd );
 	Events.InputActionTriggered.Add( OnInputActionTriggered );

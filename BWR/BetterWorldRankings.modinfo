@@ -12,27 +12,31 @@
 	<ActionCriteria>
 		<Criteria id="Expansion2">
 			<GameCoreInUse>Expansion2</GameCoreInUse>
+            <ModInUse inverse="1">2F3A65C2-0883-4BF6-8C70-EDA688C66F3C</ModInUse>
 		</Criteria>
+        <Criteria id="ScenariosNotActive">
+            <ModInUse inverse="1">2F3A65C2-0883-4BF6-8C70-EDA688C66F3C</ModInUse>
+        </Criteria>
 	</ActionCriteria>
 	<InGameActions>
-		<UpdateDatabase id="BWR_Database_Base">
+		<UpdateDatabase id="BWR_Database_Base" criteria="ScenariosNotActive">
 			<Properties><LoadOrder>100</LoadOrder></Properties>
 			<File>BetterWorldRankings_Database.sql</File>
 		</UpdateDatabase>
-		<ImportFiles id="BWR_Imports_Base">
+		<ImportFiles id="BWR_Imports_Base" criteria="ScenariosNotActive">
 			<Properties><LoadOrder>100</LoadOrder></Properties>
 			<File>Base/WorldRankings.xml</File>
 			<File>Base/WorldRankings_Base_BWR.lua</File>
 			<File>WorldRankings_BWR.lua</File>
 		</ImportFiles>
-		<ReplaceUIScript id="BWR_Replace_WorldRankings_Base">
+		<ReplaceUIScript id="BWR_Replace_WorldRankings_Base" criteria="ScenariosNotActive">
 			<Properties>
 				<LoadOrder>100</LoadOrder>
 				<LuaContext>WorldRankings</LuaContext>
 				<LuaReplace>Base/WorldRankings_Base_BWR.lua</LuaReplace>
 			</Properties>
 		</ReplaceUIScript>
-		<UpdateText id="BWR_UpdateText">
+		<UpdateText id="BWR_UpdateText" criteria="ScenariosNotActive">
 			<Properties><LoadOrder>100</LoadOrder></Properties>
 			<File>Text/BetterWorldRankings_Text.xml</File>
 		</UpdateText>

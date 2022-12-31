@@ -1422,6 +1422,8 @@ function Initialize()
 	-- loading persistent data
 	Events.LoadComplete.Add( OnLoadComplete ); -- fires ONLY when loading a game from a save file, when it's ready to start (i.e. circle button appears)
 end
-Initialize();
+if bIsGatheringStorm then
+    Initialize();
+end
 
 print("OK loaded GovernorInspector.lua from Real Governor Inspector");
